@@ -1,0 +1,50 @@
+`<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>Predict Illness Status</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<select name="City" required="true">
+        	<option value="1">New York City</option>
+        	<option value="2">Los Angeles</option>
+        	<option value="3">Dallas</option>
+        	<option value="4">Mountain View</option>
+        	<option value="5">Austin</option>
+        	<option value="6">Boston</option>
+        	<option value="7">Washington D.C.</option>
+        	<option value="8">San Diego</option>
+    	</select>
+    	
+    	
+		
+        <input type="text" name="Age" placeholder="Age" required="required" />
+		<input type="text" name="Income" placeholder="Income" required="required" />
+    	<select name="Gender" required="true">
+        	<option value="0">Male</option>
+        	<option value="1">Female</option>
+    	</select>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+ <img src="/static/images/Original.svg" style="width: 400px;position: absolute;bottom: 10px;left: 10px;" alt="Company Logo"/>
+
+</body>
+</html>
